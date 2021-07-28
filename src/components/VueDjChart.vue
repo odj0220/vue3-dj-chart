@@ -58,7 +58,7 @@ export default {
       }
 
       this.chart.render();
-
+      this.$emit('rendered');
     },
     observeSize() {
       const ro = new ResizeObserver(entries => {
@@ -470,15 +470,15 @@ export default {
       return {
         filter: () => {
           this._option.filters = this.getFilters();
-          this.changFilter.emit();
+          this.$emit('changFilter');
         },
         filterExact: () => {
           this._option.filters = this.getFilters();
-          this.changFilter.emit();
+          this.$emit('changFilter');
         },
         filterFunction: () => {
           this._option.filters = this.getFilters();
-          this.changFilter.emit();
+          this.$emit('changFilter');
         }
       };
     },
