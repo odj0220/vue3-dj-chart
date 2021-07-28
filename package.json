@@ -1,6 +1,6 @@
 {
   "name": "vue3-dj-chart",
-  "version": "0.1.3",
+  "version": "0.2.0-b0",
   "private": false,
   "main": "./dist/vue3-dj-chart.common.js",
   "scripts": {
