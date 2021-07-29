@@ -79547,7 +79547,7 @@ var cloud_chart_CloudChart = /*#__PURE__*/function (_BaseMixin) {
 
   var _super = _createSuper(CloudChart);
 
-  function CloudChart() {
+  function CloudChart(element, option) {
     var _this;
 
     _classCallCheck(this, CloudChart);
@@ -79566,8 +79566,14 @@ var cloud_chart_CloudChart = /*#__PURE__*/function (_BaseMixin) {
 
     _defineProperty(_assertThisInitialized(_this), "_tooltip", void 0);
 
+    _defineProperty(_assertThisInitialized(_this), "element", void 0);
+
+    _defineProperty(_assertThisInitialized(_this), "option", void 0);
+
     _this._width = 100;
     _this._height = 100;
+    _this.element = element;
+    _this.option = option;
     return _this;
   }
 
