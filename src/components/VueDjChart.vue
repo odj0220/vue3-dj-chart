@@ -194,11 +194,11 @@ export default {
           const tooltip = this.getTooltipElem();
           chart.selectAll('title').remove();
           chart.selectAll('g.pie-slice')
-              .on('mousemove', data => {
+              .on('mousemove', (event, data) => {
                 const key = isArray(data.data.key) ? data.data.key[0] : data.data.key;
                 const color = this._option.colors ? this._option.colors[key] : this.chart.getColor(data.data);
-                const pageX = d3.event.pageX;
-                const pageY = d3.event.pageY;
+                const pageX = event.pageX;
+                const pageY = event.pageY;
                 let left = 0, top = 0;
 
                 tooltip.transition()
@@ -603,9 +603,6 @@ export default {
     }
   },
   mounted () {
-    if (!this.option) {
-      return ;
-    }
     this.observeSize();
     this.initComponent();
   }
@@ -613,8 +610,6 @@ export default {
 </script>
 
 <style>
- @import "../../node_modules/dc/dist/style/dc.css";
-
  svg.dj-chart-cloud  text {
    font-family: 'Noto Sans KR', 'Nanum Gothic Coding', SpoqaHanSans, sans-serif !important;
    cursor: pointer;
@@ -924,7 +919,15 @@ export default {
    min-height: 30px;
    padding: 8px;
    border-radius: 4px;
-   color: #fff;
+
+   top: 0;
+   left: 0;
+   background: #fff !important;
+   border-color: #6e6e6e !important;
+   border-style: solid;
+   border-width: 1px;
+   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+   color: #000 !important;
  }
  .dj-chart-tooltip:after, .dj-chart-tooltip:before {
              border: solid transparent;
@@ -939,11 +942,19 @@ export default {
     border-color: rgba(255, 255, 255, 0);
     border-width: 5px;
     margin-top: -5px;
+
+    border-top-color: #fff !important;
+    bottom: -9px !important;
+    left: calc(50% - 4px) !important
   }
  .dj-chart-tooltip:before {
     border-color: rgba(0, 0, 0, 0);
     border-width: 6px;
     margin-top: -6px;
+
+    border-top-color: #6e6e6e !important;
+    bottom: -12px !important;
+    left: calc(50% - 5px) !important
   }
 
  .dj-chart-tooltip.top:after, .dj-chart-tooltip.top:before {top: 10px;}
@@ -953,5 +964,20 @@ export default {
    bottom: -10px;
    border-top-color: inherit;
    left: calc(50% - 6px);
+ }
+
+ .dj-chart-tooltip .tooltip-color-chip {
+   display: inline-block;
+   margin-right: 5px;
+   width: 10px;
+   height: 10px;
+   border-radius: 5px
+ }
+
+ .dj-chart-tooltip .tooltip-value {
+   width: 100%;
+   font-size: 11px;
+   font-weight: bold;
+   text-align: center;
  }
 </style>

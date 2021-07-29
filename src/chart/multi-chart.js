@@ -718,9 +718,9 @@ export default class MultiChart extends CoordinateGridMixin {
         if (this.multiOption.tooltip) {
             const tooltip = this.getTooltipElem();
             symbols
-                .on('mousemove', data => {
-                    const pageX = d3.event.pageX;
-                    const pageY = d3.event.pageY;
+                .on('mousemove', (event, data) => {
+                    const pageX = event.pageX;
+                    const pageY = event.pageY;
                     let left = 0, top = 0;
 
                     tooltip.transition()
