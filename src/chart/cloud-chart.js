@@ -169,11 +169,11 @@ export default class CloudChart extends BaseMixin {
         if (this.option && this.option.tooltip) {
             const tooltip = this.getTooltipElem();
             cloud
-                .on('mouseover', data => {
-                    const screenX = d3.event.view.innerWidth;
-                    const screenY = d3.event.view.innerHeight;
-                    const pageX = d3.event.pageX;
-                    const pageY = d3.event.pageY;
+                .on('mouseover', (event, data) => {
+                    const screenX = event.view.innerWidth;
+                    const screenY = event.view.innerHeight;
+                    const pageX = event.pageX;
+                    const pageY = event.pageY;
                     const toolX = tooltip.node().clientWidth;
                     const toolY = tooltip.node().clientHeight;
                     let left = 0, top = 0;
