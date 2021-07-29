@@ -26,6 +26,11 @@ export default {
   props: {
     option: DjChartOption
   },
+  watch: {
+    option() {
+      this.initComponent();
+    }
+  },
   methods: {
     initComponent() {
       if (!this.option) {
