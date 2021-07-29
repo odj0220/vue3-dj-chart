@@ -13,11 +13,15 @@ export default class CloudChart extends BaseMixin {
     _padding = 2;
     _legends;
     _tooltip;
+    element;
+    option;
 
-    constructor() {
+    constructor(element, option) {
         super();
         this._width = 100;
         this._height = 100;
+        this.element = element;
+        this.option = option;
     }
 
     render() {
